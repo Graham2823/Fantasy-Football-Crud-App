@@ -1,0 +1,112 @@
+*{
+    margin: auto;
+    text-align: center;
+}
+table {
+    border-spacing: 0px;
+    width: 300px;
+}
+thead{
+    text-decoration: bold;
+    font-size: 24px;
+}
+
+#add_team {
+    position:absolute;
+    top: 60px;
+    left: 328px;
+}
+
+.nav {
+    height: 40px;
+    width: 100%;
+    background-color: rgb(132, 254, 254);
+    margin-bottom: 70px;
+}
+.nav2 {
+    height: 40px;
+    width: 100%;
+    background-color: rgb(132, 254, 254);
+    margin-bottom: 30px;
+}
+
+i{
+    padding-right: 2px;
+}
+
+.table td, .table th{
+    padding: .75em;
+    vertical-align: top;
+    text-align: center;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+}
+
+.table thead{
+    background-color: rgb(56, 56, 56);
+    color: white;
+    border-color: white;
+}
+
+
+.table tbody tr:hover{
+    background-color: rgb(132, 254, 254);
+}
+
+.add_team td{
+    border: solid black .5px;
+}
+
+#title{
+    width: 250px;
+}
+
+#input {
+    width: 400px;
+}
+
+.filter{
+    position:absolute;
+    left: 50px;
+}
+
+.form-title{
+    padding-top: none;
+    padding-bottom: 25px;
+    font-size: larger;
+}
+
+.new_team_info {
+    padding-bottom: 10px;
+}
+
+.showTable {
+    width: 70vw;
+}
+
+.new_team_info label {
+    display: inline-block;
+    width: 5em;
+    text-align: right;
+    padding-right: 0.5em;
+    padding-bottom: .5em;
+}
+
+.chose_position{
+    width: 90px;
+}
+
+.add_button {
+    margin-top: 5px;
+}
+
+.save_team{
+    margin-top: 5px;
+    width: 640px;
+}
+
+.save_team:hover{
+    background-color: rgb(132, 254, 254);
+}
+
+

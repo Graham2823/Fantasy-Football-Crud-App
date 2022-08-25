@@ -1,0 +1,59 @@
+    <%-include('include/_header')%>
+
+
+<main id="site-main">
+    <a href="/new_team" class="btn border-shadow"><button id="add_team"><i class="fas fa-users"></i>Add Team</button></a>
+    <a href="/view_team" class="btn border-shadow">
+        <button id="view_team"><i class="fas fa-eye"></i>View Team</button>
+    </a>
+
+<!--form handeling-->   
+<form action="/" method="POST">
+    <div class="container showTable table-responsive">
+        <table class="table">
+            <thead>
+            <th>Team ID</th>
+            <th>Team Name</th>
+            <th>Team GM</th>
+            <th>View Team</th>
+            <th>Edit Team</th>
+            <th>Delete Team</th>
+        </thead>
+        <tbody>
+        <% for(let i=0; i < allTeams.length; i++){%>
+        <tr>
+            <td><%= i+1 %></td>
+            <td><%= allTeams[i].teamName%></td>
+            <td><%= allTeams[i].gm%></td>
+            <td>
+                 <!-- <a href="/view_team" class="btn border-shadow">
+                    <button id="view_team"><i class="fas fa-eye"></i>View Team</button>
+                </a> -->
+                <a href= <%= `/view_team/${i+1}` %> id="view_team" class="btn border-shadow" type="button">
+                    <i class="fas fa-eye"></i>View Team
+                </a>
+                
+                </td>
+            <td>
+                <a href= "/edit_team" id="edit_team"class="btn border-shadow">
+                    <i class="fas fa-edit"></i>Edit Team
+                </a>
+                </td>
+                <td>
+                    <a href="/" id="" class="btn border-shadow">
+                        <i class="fas fa-cancel"></i>Delete Team
+                    </a>
+                    </td>
+                    </tr>
+                    <% } %>
+    </tbody>
+    </table>
+    
+    </div>
+    </form>
+</main>
+    
+
+
+
+    <%-include('include/_footer')%>

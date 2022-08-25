@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fantasy Football CRUD app</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../assets/css/style.css"/>
+</head>
+<body>
+    <!--Header-->
+    <header id="header">
+        <nav>
+            <div class="container">
+                <div class="nav">
+                    <h2>Fantasy Football 2022</h2>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!--/Header-->
+
+<!--main site-->
+<main id="site-main">
+        <a href="/new_team" class="btn border-shadow"><button id="add_team"><i class="fas fa-users"></i>Add Team</button></a>
+    
+    <!--form handeling-->
+    <form action="/" method="POST">
+        <table class="table">
+            <thead>
+            <th>Team ID</th>
+            <th>Team Name</th>
+            <th>Team GM</th>
+            <th>View Team</th>
+            <th>Edit Team</th>
+            <th>Delete Team</th>
+        </thead>
+        <tbody>
+            <tr>
+            <td>1</td>
+            <td>Team Demons</td>
+            <td>John Smith</td>
+            <td>
+                <a href="/" class="btn border-shadow">
+                    <button><i class="fas fa-eye"></i>View Team</button>
+                </a>
+                </td>
+            <td>
+                <a href="/" class="btn border-shadow">
+                    <button><i class="fas fa-edit"></i>Edit Team</button>
+                </a>
+                </td>
+                <td>
+                    <a href="/" class="btn border-shadow">
+                        <button><i class="fas fa-cancel"></i>Delete Team</button>
+                    </a>
+                    </td>
+            
+        </tr>
+        </tbody>
+        </table>
+        </form>
+</main>
+
+<!--/main site-->
+
+
+</body>
+</html>

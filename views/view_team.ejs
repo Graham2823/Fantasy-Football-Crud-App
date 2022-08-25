@@ -1,0 +1,68 @@
+<%-include('include/_header')%>
+
+<main id="site-main">
+    <div class="filter">
+        <a href="/"><i class="fas fa-angle-double-left"></i>Front Page</a>
+    </div>
+    <div class="form-title">
+        <h2>View Team</h2>
+        <span>Here is this team's roster</span>
+    </div>
+    <div class="new_team_info">
+        <div class="form-group">
+            <label for="team_name"><%= team.teamName %></label>
+        </div>
+        <div class="form-group">
+            <label for="team_GM"><%=  team.gm %></label>
+           </div>
+    </div>
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>Position</th>
+                <th>Player Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Qb:</td>
+            <td><%= team.team.QB %></td>
+        </tr>
+        <tr>
+            <td>RB:</td>
+            <td><%= team.team.RB1 %></td>
+        </tr>
+        <tr>
+            <td>RB:</td>
+            <td><%= team.team.RB2 %></td>
+        </tr>
+        <tr>
+            <td>Flex:</td>
+            <td><%= team.team.Flex %></td>
+        </tr>
+        <tr>
+            <td>WR:</td>
+            <td><%= team.team.WR1 %></td>
+        </tr>
+        <tr>
+            <td>WR:</td>
+            <td><%= team.team.WR2 %></td>
+        </tr>
+        <tr>
+            <td>TE:</td>
+            <td><%= team.team.TE %></td>
+        </tr>
+        <tr>
+            <td>Defense:</td>
+            <td><%= team.team.Defense %></td>
+        </tr>
+        <tr>
+            <td>Kicker:</td>
+            <td><%= team.team.Kicker %></td>
+        </tr>
+    </tbody>
+    </table>
+    </main>
+ 
+
+<%-include('include/_footer')%>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fantasy Football CRUD app</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../assets/css/style.css"/>
+</head>
+<body>
+    <!--Header-->
+    <header id="header">
+        <nav>
+            <div class="container">
+                <div class="nav2">
+                    <h2>Fantasy Football 2022</h2>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!--/Header-->
+
+<!--main site-->
+<main id="site-main">
+<div class="filter">
+    <a href="/"><i class="fas fa-angle-double-left"></i>Front Page</a>
+</div>
+<div class="form-title">
+    <h2>Add New Team</h2>
+    <span>Use the below form to add a new team</span>
+</div>
+    
+    <!--form handeling-->
+    <form  method="POST" id="new_team">
+        <div class="new_team_info">
+            <div class="form-group">
+                <label for="team_name">Team Name</label>
+                <input type="text" name="team_name" placeholder = "The Goats">
+            </div>
+            <div class="form-group">
+                <label for="team_GM">GM Name</label>
+                <input type="text" name="team_GM" placeholder = "John Smith">
+            </div>
+        
+            <div class="inputs">
+                <select class="chose_position">
+                <option>QB</option>
+                <option>RB1</option>
+                <option>RB2</option>
+                <option>Flex</option>
+                <option>WR1</option>
+                <option>WR2</option>
+                <option>TE</option>
+                <option>Defense/ST</option>
+                <option>Kicker</option>
+            </select>
+            <input type="text" class="add_name" placeholder = "player name"></input>
+            <button class="add_button">Add To Team</button>
+            </div>
+        </div>
+        <table class="add_team">
+            <tr>
+                <td class="QB_title" id="title">QB:</td>
+                <td class="QB_input" id="input"></td>
+            </tr>
+            <tr>
+                <td class=RB1_title" id="title">RB1:</td>
+                <td class="RB1_input" id="input"></td>
+            </tr>
+            <tr>
+                <td class="RB2_title" id="title">RB2:</td>
+                <td class="RB2_input" id="input"></td>
+            </tr>
+            <tr>
+                <td class="Flex_title" id="title">Flex:</td>
+                <td class="Flex_input" id="input"></td>
+            </tr>
+            <tr>
+                <td class="WR1_title" id="title">WR1:</td>
+                <td class="WR1_input" id="input"></td>
+            </tr>
+            <tr>
+                <td class="WR2_title" id="title">WR2:</td>
+                <td class="WR2_input" id="input"></td>
+            </tr>
+            <tr>
+                <td class="TE_title" id="title">TE:</td>
+                <td class="TE_input" id="input"></td>
+            </tr>
+            <tr>
+                <td class="Defense_title" id="title">Defense:</td>
+                <td class="Defense_input" id="input"></td>
+            </tr>
+            <tr>
+                <td class="Kicker_title" id="title">Kicker:</td>
+                <td class="Kicker_input" id="input"></td>
+            </tr>
+        </table>
+        <button class="save_team">Save Team</button>
+        </form>
+</main>
+
+<!--/main site-->
+
+
+</body>
+</html>

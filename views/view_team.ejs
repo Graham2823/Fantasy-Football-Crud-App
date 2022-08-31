@@ -1,22 +1,35 @@
 <%-include('include/_header')%>
 
-<main id="site-main">
+<main id="view_team_main">
     <div class="filter">
         <a href="/"><i class="fas fa-angle-double-left"></i>Front Page</a>
     </div>
     <div class="form-title">
-        <h2>View Team</h2>
-        <span>Here is this team's roster</span>
+        <h2>You are Viewing <%=  team.gm %>'s Team</h2>
+        <h3>Here is <%= team.teamName %> Roster:</h3>
     </div>
     <div class="new_team_info">
         <div class="form-group">
-            <label for="team_name"><%= team.teamName %></label>
-        </div>
-        <div class="form-group">
-            <label for="team_GM"><%=  team.gm %></label>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Team Name:</th>
+                        <th>GM Name:</th>
+                        <th> <form action= "/view_team/<%=index%>?_method=DELETE" method= "POST" ><button type="submit">
+                            <i class="fas fa-cancel"></i>Delete Team</button>
+                        </form></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="team_identification">
+                        <td class="team_name"><label for="team_name"><%= team.teamName %></label></td>
+                    <td><label for="team_GM"><%=  team.gm %></label></td>
+                    </tr>
+                </tbody>
+         </table>
            </div>
     </div>
-    <table class="table table-responsive">
+    <table class="table table-responsive view_table">
         <thead>
             <tr>
                 <th>Position</th>
@@ -25,7 +38,7 @@
     </thead>
     <tbody>
         <tr>
-            <td>Qb:</td>
+            <td>QB:</td>
             <td><%= team.team.QB %></td>
         </tr>
         <tr>

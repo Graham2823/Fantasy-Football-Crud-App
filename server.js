@@ -5,6 +5,7 @@ const app = express();
 const bodyparser = require("body-parser");
 const path = require('path');
 const teams = require("./server/model/model.js")
+const methodOverride = require('method-override')
 
 
 
@@ -24,6 +25,7 @@ app.set("view engine", "ejs")
 
 //load assets
 app.use(express.static("assets"))
+app.use(methodOverride("_method"))
 //app.use("/css", express.static(path.resolve(__dirname, "assets/css")));
 //app.use("/img", express.static(path.resolve(__dirname, "assets/img")));
 //app.use("/js", express.static(path.resolve(__dirname, "assets/js")));
@@ -35,19 +37,20 @@ app.get('/',(req, res)=>{
     );
 })
 app.post('/',(req, res) =>{
+    console.log(req.body)
     const newTeam= {
-        teamName: req.body.teamName,
-        gm: req.body.gm,
+        teamName: req.body.team_name,
+        gm: req.body.team_GM,
         team: {
-            QB: req.body.team.QB,
-            RB1: req.body.team.RB1,
-            RB2: req.body.team.RB2,
-            Flex: req.body.team.Flex,
-            WR1: req.body.team.WR1,
-            WR2: req.body.team.WR2,
-            TE: req.body.team.TE,
-            Defense: req.body.team.Defense,
-            Kicker: req.body.team.Kicker
+            QB: req.body.QB,
+            RB1: req.body.RB1,
+            RB2: req.body.RB2,
+            Flex: req.body.Flex,
+            WR1: req.body.WR1,
+            WR2: req.body.WR2,
+            TE: req.body.TE,
+            Defense: req.body.Defense,
+            Kicker: req.body.Kicker
     }
 }
     teams.push(newTeam);
@@ -60,15 +63,44 @@ app.get('/new_team',(req, res)=>{
 
 app.get('/view_team/:teamID',(req, res)=>{
    const currentIndex = req.params.teamID - 1
-    console.log(currentIndex);
+   console.log(currentIndex);
     res.render('view_team', {
         team: teams[currentIndex],
         index: currentIndex
     });
 })
 
-app.get('/edit_team',(req, res)=>{
-    res.render('edit_team');
+app.get('/edit_team/:teamID',(req, res)=>{
+    const currentIndex = req.params.teamID - 1
+    console.log(currentIndex)
+    res.render('edit_team', {
+        team: teams[currentIndex],
+        index: currentIndex
+    });
 })
+
+app.put('/edit_team/:teamID',(req, res)=>{
+    console.log(req.body)
+    const id= req.params.teamID
+    console.log(id)
+    teams[id].teamName = req.body.team_name
+    teams[id].gm = req.body.team_GM
+    teams[id].team.QB = req.body.QB
+    teams[id].team.RB1 = req.body.RB1
+    teams[id].team.RB2 = req.body.RB2
+    teams[id].team.Flex = req.body.Flex
+    teams[id].team.WR1 = req.body.WR1
+    teams[id].team.WR2 = req.body.WR2
+    teams[id].team.TE = req.body.TE
+    teams[id].team.Defense = req.body.Defense
+    teams[id].team.Kicker = req.body.Kicker
+    res.redirect('/')
+})
+
+app.delete('/view_team/:teamID', (req, res) =>{
+    console.log("deleted successfully")
+    teams.splice(req.params.teamID, 1)
+    res.redirect('/')
+}), 
 
 app.listen(PORT, ()=>{console.log("Server is running on http://localhost:${PORT}")})

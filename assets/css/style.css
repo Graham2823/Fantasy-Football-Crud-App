@@ -23,12 +23,6 @@ thead{
     background-color: rgb(132, 254, 254);
     margin-bottom: 70px;
 }
-.nav2 {
-    height: 40px;
-    width: 100%;
-    background-color: rgb(132, 254, 254);
-    margin-bottom: 30px;
-}
 
 i{
     padding-right: 2px;
@@ -109,4 +103,14 @@ i{
     background-color: rgb(132, 254, 254);
 }
 
+.view_table{
+    width: 800px;
+}
 
+.team_name{
+    white-space: nowrap;
+}
+
+h3{
+    font-weight: normal;
+}

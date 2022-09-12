@@ -1,23 +1,25 @@
 const express = require('express');
-const dotenv = require('dotenv')
+require("dotenv").config()
 const morgan = require('morgan');
 const app = express();
 const bodyparser = require("body-parser");
 const path = require('path');
-const teams = require("./server/model/model.js")
+const Teams = require("./server/model/teams.js")
 const methodOverride = require('method-override')
+const session = require('express-session')
+const MongoStore = require('connect-mongo')
 
 
 
-dotenv.config({path: "config.env"})
-const PORT = process.env.PORT||8080
+//dotenv.config({path: "config.env"})
+const PORT = process.env.PORT
 
 // log requests
 app.use(morgan("tiny"));
 
 
-// parse requirements
-app.use(bodyparser.urlencoded({extended: true}))
+// // parse requirements
+// app.use(bodyparser.urlencoded({extended: true}))
 
 //set view engine
 app.set("view engine", "ejs")
@@ -29,19 +31,33 @@ app.use(methodOverride("_method"))
 //app.use("/css", express.static(path.resolve(__dirname, "assets/css")));
 //app.use("/img", express.static(path.resolve(__dirname, "assets/img")));
 //app.use("/js", express.static(path.resolve(__dirname, "assets/js")));
+app.use(
+    session({
+        secret: process.env.SECRET,
+        store: MongoStore.create({mongoUrl: process.env.MONGODB_URI}),
+        saveUninitialized: true,
+        resave: false,
+    })
+)
 
+app.use(express.urlencoded({extended: true}))
 
 app.get('/',(req, res)=>{
-    res.render('index', 
-    {allTeams: teams}
-    );
+    // res.send("This Worked")
+    Teams.find()
+        .then((teams)=>{
+            res.render('index.ejs', {teams})
+        })
+        .catch((error)=>{
+            console.log(error)
+        })
 })
 app.post('/',(req, res) =>{
     console.log(req.body)
     const newTeam= {
         teamName: req.body.team_name,
         gm: req.body.team_GM,
-        team: {
+        Team: {
             QB: req.body.QB,
             RB1: req.body.RB1,
             RB2: req.body.RB2,
@@ -53,8 +69,14 @@ app.post('/',(req, res) =>{
             Kicker: req.body.Kicker
     }
 }
-    teams.push(newTeam);
-    res.redirect('/');
+    Teams.create(newTeam)
+        .then((data)=>{
+            console.log(data)
+            res.redirect('/')
+        })
+        .catch((error)=>{
+            console.log(error)
+        })
 })
 
 app.get('/new_team',(req, res)=>{
@@ -65,7 +87,7 @@ app.get('/view_team/:teamID',(req, res)=>{
    const currentIndex = req.params.teamID - 1
    console.log(currentIndex);
     res.render('view_team', {
-        team: teams[currentIndex],
+        Team: Teams[currentIndex],
         index: currentIndex
     });
 })
@@ -74,7 +96,7 @@ app.get('/edit_team/:teamID',(req, res)=>{
     const currentIndex = req.params.teamID - 1
     console.log(currentIndex)
     res.render('edit_team', {
-        team: teams[currentIndex],
+        team: Teams[currentIndex],
         index: currentIndex
     });
 })
@@ -103,4 +125,4 @@ app.delete('/view_team/:teamID', (req, res) =>{
     res.redirect('/')
 }), 
 
-app.listen(PORT, ()=>{console.log("Server is running on http://localhost:${PORT}")})
+app.listen(PORT, ()=>{console.log(`Server is running on http://localhost:${PORT}`)})

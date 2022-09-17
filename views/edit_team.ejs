@@ -8,7 +8,7 @@
         <h2>Edit Team</h2>
         <span>Use the below form to edit the team</span>
     </div>
-    <form  method="POST" id="edit_team" action="/edit_team/<%= index %>?_method=PUT">
+    <form id="edit_team" action=<%= `/edit_team/${team._id}?_method=PUT` %> method="POST" >
         <div class="new_team_info">
             <div class="form-group">
                 <label for="team_name">Team Name</label>
@@ -22,39 +22,39 @@
         <table class="add_team">
             <tr>
                 <td class="QB_title" id="title">QB:</td>
-                <td><input class="QB_input" id="input" value= "<%= team.team.QB %>" name="QB"></input></td>
+                <td><input class="QB_input" id="input" value= "<%= team.Team.QB %>" name="QB"></input></td>
             </tr>
             <tr>
                 <td class=RB1_title" id="title">RB1:</td>
-                <td><input class="RB1_input" id="input" value= "<%= team.team.RB1 %>" name="RB1"></input></td>
+                <td><input class="RB1_input" id="input" value= "<%= team.Team.RB1 %>" name="RB1"></input></td>
             </tr>
             <tr>
                 <td class="RB2_title" id="title">RB2:</td>
-                <td><input class="RB2_input" id="input" value= "<%= team.team.RB2 %>" name="RB2"></input></td>
+                <td><input class="RB2_input" id="input" value= "<%= team.Team.RB2 %>" name="RB2"></input></td>
             </tr>
             <tr>
                 <td class="Flex_title" id="title">Flex:</td>
-                <td><input class="flex_input" id="input" value= "<%= team.team.Flex %>" name="Flex"></input></td>
+                <td><input class="flex_input" id="input" value= "<%= team.Team.Flex %>" name="Flex"></input></td>
             </tr>
             <tr>
                 <td class="WR1_title" id="title">WR1:</td>
-                <td><input class="WR1_input" id="input" value= "<%= team.team.WR1 %>" name="WR1"></input></td>
+                <td><input class="WR1_input" id="input" value= "<%= team.Team.WR1 %>" name="WR1"></input></td>
             </tr>
             <tr>
                 <td class="WR2_title" id="title">WR2:</td>
-                <td><input class="WR2_input" id="input" value= "<%= team.team.WR2 %>" name="WR2"></input></td>
+                <td><input class="WR2_input" id="input" value= "<%= team.Team.WR2 %>" name="WR2"></input></td>
             </tr>
             <tr>
                 <td class="TE_title" id="title">TE:</td>
-                <td><input class="TE_input" id="input" value= "<%= team.team.TE %>" name="TE"></input></td>
+                <td><input class="TE_input" id="input" value= "<%= team.Team.TE %>" name="TE"></input></td>
             </tr>
             <tr>
                 <td class="Defense_title" id="title">Defense:</td>
-                <td><input class="Defense_input" id="input" value= "<%= team.team.Defense %>" name="Defense"></input></td>
+                <td><input class="Defense_input" id="input" value= "<%= team.Team.Defense %>" name="Defense"></input></td>
             </tr>
             <tr>
                 <td class="Kicker_title" id="title">Kicker:</td>
-                <td><input class="Kicker_input" id="input" value= "<%= team.team.Kicker %>" name="Kicker"></input></td>
+                <td><input class="Kicker_input" id="input" value= "<%= team.Team.Kicker %>" name="Kicker"></input></td>
             </tr>
         </table>
         <button class="save_team">Save Team</button>

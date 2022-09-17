@@ -83,46 +83,73 @@ app.get('/new_team',(req, res)=>{
     res.render('add_team');
 })
 
-app.get('/view_team/:teamID',(req, res)=>{
-   const currentIndex = req.params.teamID - 1
-   console.log(currentIndex);
-    res.render('view_team', {
-        Team: Teams[currentIndex],
-        index: currentIndex
+app.get('/view_team/:id',(req, res)=>{
+    const id = req.params.id
+    console.log(id);
+    Teams.findOne({_id: id})
+        .then((team)=>{
+            console.log(team)
+            res.render('view_team.ejs', {team})
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
+
+
+    // Teams.findbyID(team)
+    // .then((team)=>{
+    //     res.render('view_team.ejs', {teams})
+    // })
+//    const currentIndex = req.params.teamID - 1
+//     const viewTeam = Teams.findById(id)
+//    console.log(viewTeam);
+//     res.render('view_team', {
+//         Team: viewTeam,
+//         index: currentIndex
+//     });
+//     console.log(Team);
+})
+
+app.get('/edit_team/:id',(req, res)=>{
+    const id = req.params.id
+    Teams.findOne({_id: id})
+        .then((team)=>{
+            res.render('edit_team.ejs', {team})
+            console.log('working')
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
+    // const currentIndex = req.params.teamID - 1
+    // console.log(currentIndex)
+    // res.render('edit_team', {
+    //     team: Teams[currentIndex],
+    //     index: currentIndex
     });
+
+app.put('/edit_team/:id',(req, res)=>{
+    const id= req.params.id
+    console.log(req.body.team_GM)
+    Teams.findOneAndUpdate({_id: id}, {$set:{teamName: req.body.team_name, gm: req.body.team_GM}})
+        .then((team)=>{
+            console.log(team)
+            res.redirect('/')
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
 })
 
-app.get('/edit_team/:teamID',(req, res)=>{
-    const currentIndex = req.params.teamID - 1
-    console.log(currentIndex)
-    res.render('edit_team', {
-        team: Teams[currentIndex],
-        index: currentIndex
-    });
-})
-
-app.put('/edit_team/:teamID',(req, res)=>{
-    console.log(req.body)
-    const id= req.params.teamID
-    console.log(id)
-    teams[id].teamName = req.body.team_name
-    teams[id].gm = req.body.team_GM
-    teams[id].team.QB = req.body.QB
-    teams[id].team.RB1 = req.body.RB1
-    teams[id].team.RB2 = req.body.RB2
-    teams[id].team.Flex = req.body.Flex
-    teams[id].team.WR1 = req.body.WR1
-    teams[id].team.WR2 = req.body.WR2
-    teams[id].team.TE = req.body.TE
-    teams[id].team.Defense = req.body.Defense
-    teams[id].team.Kicker = req.body.Kicker
-    res.redirect('/')
-})
-
-app.delete('/view_team/:teamID', (req, res) =>{
-    console.log("deleted successfully")
-    teams.splice(req.params.teamID, 1)
-    res.redirect('/')
-}), 
+app.delete('/view_team/:id', (req, res) =>{
+    const id= req.params.id
+    Teams.deleteOne({_id: id})
+        .then((team)=>{
+            res.redirect('/')
+            console.log("deleted successfully")
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
+}) 
 
 app.listen(PORT, ()=>{console.log(`Server is running on http://localhost:${PORT}`)})

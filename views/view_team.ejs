@@ -5,7 +5,7 @@
         <a href="/"><i class="fas fa-angle-double-left"></i>Front Page</a>
     </div>
     <div class="form-title">
-        <h2>You are Viewing <%=  Team.gm %>'s Team</h2>
+        <h2>You are Viewing <%= team.gm %>'s Team</h2>
         <h3>Here is <%= team.teamName %> Roster:</h3>
     </div>
     <div class="new_team_info">
@@ -15,15 +15,15 @@
                     <tr>
                         <th>Team Name:</th>
                         <th>GM Name:</th>
-                        <th> <form action= "/view_team/<%=index%>?_method=DELETE" method= "POST" ><button type="submit">
+                        <th> <form action=<%= `/view_team/${team._id}?_method=DELETE` %> method= "POST" ><button type="submit">
                             <i class="fas fa-cancel"></i>Delete Team</button>
                         </form></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr class="team_identification">
-                        <td class="team_name"><label for="team_name"><%= Team.teamName %></label></td>
-                    <td><label for="team_GM"><%=  team.gm %></label></td>
+                        <td class="team_name"><label for="team_name"><%= team.teamName %></label></td>
+                    <td><label for="team_GM"><%= team.gm %></label></td>
                     </tr>
                 </tbody>
          </table>
@@ -39,39 +39,39 @@
     <tbody>
         <tr>
             <td>QB:</td>
-            <td><%= team.team.QB %></td>
+            <td><%= team.Team.QB %></td>
         </tr>
         <tr>
             <td>RB:</td>
-            <td><%= team.team.RB1 %></td>
+            <td><%= team.Team.RB1 %></td>
         </tr>
         <tr>
             <td>RB:</td>
-            <td><%= team.team.RB2 %></td>
+            <td><%= team.Team.RB2 %></td>
         </tr>
         <tr>
             <td>Flex:</td>
-            <td><%= team.team.Flex %></td>
+            <td><%= team.Team.Flex %></td>
         </tr>
         <tr>
             <td>WR:</td>
-            <td><%= team.team.WR1 %></td>
+            <td><%= team.Team.WR1 %></td>
         </tr>
         <tr>
             <td>WR:</td>
-            <td><%= team.team.WR2 %></td>
+            <td><%= team.Team.WR2 %></td>
         </tr>
         <tr>
             <td>TE:</td>
-            <td><%= team.team.TE %></td>
+            <td><%= team.Team.TE %></td>
         </tr>
         <tr>
             <td>Defense:</td>
-            <td><%= team.team.Defense %></td>
+            <td><%= team.Team.Defense %></td>
         </tr>
         <tr>
             <td>Kicker:</td>
-            <td><%= team.team.Kicker %></td>
+            <td><%= team.Team.Kicker %></td>
         </tr>
     </tbody>
     </table>

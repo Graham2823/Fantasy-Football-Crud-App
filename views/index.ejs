@@ -21,16 +21,13 @@
             <td><%= teams[i].teamName%></td>
             <td><%= teams[i].gm%></td>
             <td>
-                 <!-- <a href="/view_team" class="btn border-shadow">
-                    <button id="view_team"><i class="fas fa-eye"></i>View Team</button>
-                </a> -->
-                <a href= <%= `/view_team/${i+1}` %> id="view_team" class="btn border-shadow" type="button">
+                <a href= <%= `/view_team/${teams[i]._id}` %> id="view_team" class="btn border-shadow" type="button">
                     <i class="fas fa-eye"></i>View Team
                 </a>
                 
                 </td>
             <td>
-                <a href= <%= `/edit_team/${i+1}` %> id="edit_team"class="btn border-shadow">
+                <a href= <%= `/edit_team/${teams[i]._id}` %> id="edit_team"class="btn border-shadow">
                     <i class="fas fa-edit"></i>Edit Team
                 </a>
                 </td>
